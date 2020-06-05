@@ -1,6 +1,8 @@
-## Carga de stock masiva Multi-hilo
+## Order-Checker: paid status en shopify
 
-Este repo permite la carga de stock a multiples cuentas de centry mediante archivo config
+Este script lee todos los pedidos en estado pendiente desde el 15 de mayo
+compara con las ordenes homologas en shopify para determinar si el estado paid se transmitió a centry o no,
+Adicionalmente también simula la llamada de actualización de pedido shopify a centry para corregir los casos encontrados.
 
 ## Requisitos
 
@@ -15,25 +17,9 @@ Para usar este repo mediante el comando ./Run.sh  se debe tener Docker instalado
         "app_id"          : "{{app_id}}",
         "secret_id"       : "{{secret_id}}",
         "redirect_uri"    : "{{redirect_app_uri}}",
-        "url_data"        : "{{Decarga de información}}"  // url con json  
+        "tienda-shop"     : "{{tienda-shop}}",
+        "apikey-shop"     : "{{apikey-shop}}",
+        "pass-shop"       : "{{pass-shop}}"
     },
 ]
 ```
-
-## Formato de inyección de datos
-
-```json
-[
-    {
-        "9003629_900362901_6194":{  // lo que que estime conveniente.
-            "id_variante_centry":  "{{id_variante}}",  // id_variante_centry
-            "stock":  0 // Stock final
-            }
-    }
-
-]
-```
-
-## Limitaciones
-
-    * única bodega en centry.
